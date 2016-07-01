@@ -3,11 +3,10 @@
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 //
 
-#define __STDC_FORMAT_MACROS
-#include <inttypes.h>
-
 #include "stdafx.h"
 #include "EvalTestHelper.h"
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
 
 using namespace Microsoft::MSR::CNTK;
 
