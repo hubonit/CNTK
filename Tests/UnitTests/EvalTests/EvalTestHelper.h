@@ -69,7 +69,7 @@ struct EvalFixture
                     newCurrentPath = m_testDataPath;
                 }
             }
-            else if ((subPath[0] == '/' && subPath[1] == '//') || (subPath[0] == '\\' && subPath[1] == '\\'))
+            else if ((subPath[0] == '/' && subPath[1] == '/') || (subPath[0] == '\\' && subPath[1] == '\\'))
             {
                 newCurrentPath = subPath;
             }

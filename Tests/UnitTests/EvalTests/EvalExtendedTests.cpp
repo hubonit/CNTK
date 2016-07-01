@@ -3,6 +3,9 @@
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
 //
 
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
+
 #include "stdafx.h"
 #include "EvalTestHelper.h"
 
@@ -50,7 +53,7 @@ IEvaluateModelExtended<float>* SetupNetworkAndGetLayouts(std::string modelDefini
     }
     catch (std::exception& ex)
     {
-        fprintf(stderr, ex.what());
+        fprintf(stderr, "%s\n", ex.what());
         throw;
     }
     fflush(stderr);
@@ -59,9 +62,9 @@ IEvaluateModelExtended<float>* SetupNetworkAndGetLayouts(std::string modelDefini
     outputLayouts = eval->GetOutputSchema();
 
     for (auto vl : outputLayouts)
-    {
-        fprintf(stderr, "Output dimension: %d\n", vl.m_numElements);
-        fprintf(stderr, "Output name: %ls\n", vl.m_name);
+    {        
+        fprintf(stderr, "Output dimension: %" PRIu64 "\n", vl.m_numElements);
+        fprintf(stderr, "Output name: %ls\n", vl.m_name.c_str());
     }
 
     eval->StartForwardEvaluation({outputLayouts[0].m_name});
