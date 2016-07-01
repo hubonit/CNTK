@@ -817,7 +817,7 @@ $(UNITTEST_EVAL): $(UNITTEST_EVAL_OBJ) | $(EVAL_LIB) $(CNTKMATH_LIB)
 	@echo $(SEPARATOR)
 	@mkdir -p $(dir $@)
 	@echo building $(UNITTEST_EVAL) for $(ARCH) with build type $(BUILDTYPE)
-	$(CXX) $(LDFLAGS) $(patsubst %,-L%, $(LIBDIR) $(BOOSTLIB_PATH)) -o $@ $^ -lboost_unit_test_framework -l$(EVAL) -l$(CNTKMATH) 
+	$(CXX) $(LDFLAGS) $(patsubst %,-L%, $(LIBDIR) $(BOOSTLIB_PATH)) $(patsubst %, $(RPATH)%, $(LIBDIR)) -o $@ $^ $(BOOSTLIB_PATH)/libboost_unit_test_framework.a $(BOOSTLIB_PATH)/libboost_filesystem.a $(BOOSTLIB_PATH)/libboost_system.a -l$(EVAL) -l$(CNTKMATH) 
 
 unittests : $(UNITTEST_EVAL)
 
