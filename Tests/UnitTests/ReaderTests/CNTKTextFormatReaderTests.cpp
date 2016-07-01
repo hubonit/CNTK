@@ -4,7 +4,9 @@
 //
 #include "stdafx.h"
 #include <algorithm>
+#ifdef _WIN32
 #include <io.h>
+#endif
 #include <cstdio>
 #include <boost/scope_exit.hpp>
 #include "Common/ReaderTestHelper.h"
