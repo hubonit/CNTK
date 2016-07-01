@@ -841,6 +841,8 @@ $(UNITTEST_READER): $(UNITTEST_READER_OBJ) | $(HTKMLFREADER) $(HTKDESERIALIZERS)
 	@echo building $@ for $(ARCH) with build type $(BUILDTYPE)
 	$(CXX) $(LDFLAGS) $(patsubst %,-L%, $(LIBDIR) $(BOOSTLIB_PATH)) $(patsubst %, $(RPATH)%, $(LIBDIR) $(BOOSTLIB_PATH)) -o $@ $^ $(patsubst %, -l%, $(BOOSTLIBS)) -lHTKMLFReader -lHTKDeserializers -lUCIFastReader -lImageReader -l$(CNTKMATH) 
 
+unittests: $(UNITTEST_EVAL) $(UNITTEST_READER)
+
 ########################################
 # General compile and dependency rules
 ########################################
@@ -871,7 +873,7 @@ $(OBJDIR)/%.o : %.cpp $(BUILD_CONFIGURATION)
 	@mkdir -p $(dir $@)
 	$(CXX) -c $< -o $@ $(COMMON_FLAGS) $(CPPFLAGS) $(CXXFLAGS) $(INCLUDEPATH:%=-I%) -MD -MP -MF ${@:.o=.d}
 
-.PHONY: clean buildall all
+.PHONY: clean buildall all unittests
 
 clean:
 	@echo $(SEPARATOR)
