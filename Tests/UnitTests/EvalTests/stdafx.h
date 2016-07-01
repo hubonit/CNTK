@@ -20,5 +20,9 @@
 #include "Eval.h"
 
 //Adding required boost header
+#ifndef _WIN32
+// Use dynamic library on Linux
+#define BOOST_TEST_DYN_LINK
+#endif
 #include <boost/test/unit_test.hpp>
 #include <boost/format.hpp>
