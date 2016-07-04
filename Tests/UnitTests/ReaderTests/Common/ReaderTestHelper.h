@@ -302,7 +302,8 @@ struct ReaderFixture
         std::wstring configFN(configFileName.begin(), configFileName.end());
         std::wstring configFileCommand(L"configFile=" + configFN);
 
-        wchar_t* arg[2]{L"CNTK", &configFileCommand[0]};
+	wchar_t cntkName[] = L"CNTK";
+        wchar_t* arg[2]{cntkName, &configFileCommand[0]};
         ConfigParameters config;
         const std::string rawConfigString = ConfigParameters::ParseCommandLine(2, arg, config);
 
